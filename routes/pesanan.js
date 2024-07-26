@@ -3,7 +3,7 @@ const router = express.Router();
 const { getAllPesanan, getPesananById, createPesanan, updatePesanan, deletePesanan } = require('../controllers/pesananController');
 const { authenticate, authorize } = require('../middleware/auth');
 
-// Rute CRUD dengan middleware dan pengontrol
+// Rute CRUD dengan middleware dan pengontrol terhadap akses tertentu
 router.get('/', authenticate, authorize(['Penjual', 'Pembeli']), getAllPesanan);
 router.get('/:id', authenticate, authorize(['Penjual', 'Pembeli']), getPesananById);
 router.post('/', authenticate, authorize(['Pembeli']), createPesanan);
